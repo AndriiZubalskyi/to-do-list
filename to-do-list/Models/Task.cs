@@ -12,7 +12,7 @@ namespace to_do_list.Models
         public string Description { get; set; }
         public Priority Priority { get; set; }
         [AllowNull]
-        public DateTime Deadline { get; set; }
+        public DateTime? Deadline { get; set; }
         public bool IsCompleted { get; set; }
     }
 }
