@@ -1,7 +1,36 @@
-﻿
+﻿@model IEnumerable<to_do_list.Models.Task>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index Tasks</h1>
 
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Deadline</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Description
+                </td>
+                <td>
+                    @obj.Priority
+                </td>
+                <td>
+                    @obj.Deadline
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -14,8 +14,8 @@ namespace to_do_list.Controllers
 
         public IActionResult Index()
         {
-            var tasksList = _db.Tasks.ToList();
-            return View();
+            IEnumerable<Models.Task> tasksList = _db.Tasks;
+            return View(tasksList);
         }
     }
 }
