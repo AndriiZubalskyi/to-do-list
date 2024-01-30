@@ -4,7 +4,7 @@
     {
         None = 0,
         Low,
-        Middle,
+        Medium,
         High
     }
 }

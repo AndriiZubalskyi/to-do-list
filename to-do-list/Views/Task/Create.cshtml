@@ -1,0 +1,28 @@
+﻿@model to_do_list.Models.Task
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Task</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Priority"></label> &nbsp;
+            <select asp-for="Priority" asp-items="Html.GetEnumSelectList<Priority>()"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Deadline"></label>
+            <input asp-for="Deadline" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Tasks</a>
+    </div>
+</form>

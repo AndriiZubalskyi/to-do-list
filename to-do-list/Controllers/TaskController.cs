@@ -17,5 +17,11 @@ namespace to_do_list.Controllers
             IEnumerable<Models.Task> tasksList = _db.Tasks;
             return View(tasksList);
         }
+
+        //GET
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
