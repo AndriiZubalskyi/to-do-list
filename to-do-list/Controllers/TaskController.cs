@@ -23,5 +23,15 @@ namespace to_do_list.Controllers
         {
             return View();
         }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Models.Task task)
+        {
+            _db.Tasks.Add(task);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
