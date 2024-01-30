@@ -22,6 +22,7 @@
         <div class="mb-3">
             <label asp-for="Deadline"></label>
             <input asp-for="Deadline" class="form-control" />
+            <span asp-validation-for="Deadline" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
         <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Tasks</a>

@@ -29,6 +29,10 @@ namespace to_do_list.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Models.Task task)
         {
+            if(task.Deadline.HasValue && task.Deadline <=  DateTime.UtcNow)
+            {
+                ModelState.AddModelError("deadline", "Deadline must be later than currend date and time.");
+            }
             if (ModelState.IsValid)
             {
                 _db.Tasks.Add(task);
