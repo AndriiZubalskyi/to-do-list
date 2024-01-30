@@ -29,9 +29,13 @@ namespace to_do_list.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Models.Task task)
         {
-            _db.Tasks.Add(task);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Tasks.Add(task);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(task);
         }
     }
 }
