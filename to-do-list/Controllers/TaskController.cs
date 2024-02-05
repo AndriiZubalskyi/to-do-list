@@ -37,6 +37,7 @@ namespace to_do_list.Controllers
             {
                 _db.Tasks.Add(task);
                 _db.SaveChanges();
+                TempData["success"] = "Task created successfully";
                 return RedirectToAction("Index");
             }
             return View(task);
@@ -73,6 +74,7 @@ namespace to_do_list.Controllers
             {
                 _db.Tasks.Update(task);
                 _db.SaveChanges();
+                TempData["success"] = "Task updated successfully";
                 return RedirectToAction("Index");
             }
             return View(task);
@@ -110,6 +112,7 @@ namespace to_do_list.Controllers
 
             _db.Tasks.Remove(taskToDelete);
             _db.SaveChanges();
+            TempData["success"] = "Task deleted successfully";
             return RedirectToAction("Index");
         }
     }
