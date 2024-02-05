@@ -71,7 +71,7 @@ namespace to_do_list.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Tasks.Add(task);
+                _db.Tasks.Update(task);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
