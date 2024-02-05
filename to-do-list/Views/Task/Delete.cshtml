@@ -1,0 +1,35 @@
+﻿@model to_do_list.Models.Task
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Task</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" disabled class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" disabled class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Priority"></label> &nbsp;
+            <select asp-for="Priority" asp-items="Html.GetEnumSelectList<Priority>()" disabled></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Deadline"></label>
+            <input asp-for="Deadline" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Tasks</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

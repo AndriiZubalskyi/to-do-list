@@ -77,5 +77,40 @@ namespace to_do_list.Controllers
             }
             return View(task);
         }
+
+        //GET
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var taskToDelete = _db.Tasks.Find(id);
+
+            if (taskToDelete == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskToDelete);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePOST(int? id)
+        {
+            var taskToDelete = _db.Tasks.Find(id);
+
+            if (taskToDelete == null)
+            {
+                return NotFound();
+            }
+
+            _db.Tasks.Remove(taskToDelete);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
