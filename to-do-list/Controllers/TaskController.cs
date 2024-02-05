@@ -41,5 +41,41 @@ namespace to_do_list.Controllers
             }
             return View(task);
         }
+
+        //GET
+        public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0) 
+            {
+                return NotFound();
+            }
+            
+            var taskToEdit = _db.Tasks.Find(id);
+
+            if(taskToEdit == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskToEdit);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Models.Task task)
+        {
+            if (task.Deadline.HasValue && task.Deadline <= DateTime.UtcNow)
+            {
+                ModelState.AddModelError("deadline", "Deadline must be later than currend date and time.");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.Tasks.Add(task);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(task);
+        }
     }
 }
