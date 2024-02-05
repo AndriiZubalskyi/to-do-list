@@ -97,7 +97,7 @@ namespace to_do_list.Controllers
         }
 
         //POST
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
